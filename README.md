@@ -118,25 +118,6 @@ npm run dev
 
 ---
 
-## 📱 **Screenshots**
-
-<div align="center">
-
-### **Dashboard Overview**
-![Dashboard](https://via.placeholder.com/800x400/2196F3/FFFFFF?text=Dashboard+Overview)
-
-### **Customer Management**
-![Customers](https://via.placeholder.com/800x400/4CAF50/FFFFFF?text=Customer+Management)
-
-### **Sales Interface**
-![Sales](https://via.placeholder.com/800x400/FF9800/FFFFFF?text=Sales+Interface)
-
-### **Reports & Analytics**
-![Reports](https://via.placeholder.com/800x400/9C27B0/FFFFFF?text=Reports+%26+Analytics)
-
-</div>
-
----
 
 ## 🏗️ **Project Architecture**
 
@@ -153,10 +134,14 @@ graph TB
     G[Admin Panel] --> B
     H[Mobile App] --> B
     
-    style A fill:#61DAFB
-    style B fill:#68D391
-    style E fill:#336791
-    style C fill:#F6AD55
+    style A fill:#e1f5fe,stroke:#01579b,stroke-width:2px,color:#000
+    style B fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#000
+    style C fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#000
+    style D fill:#e8f5e8,stroke:#1b5e20,stroke-width:2px,color:#000
+    style E fill:#fce4ec,stroke:#880e4f,stroke-width:2px,color:#000
+    style F fill:#f1f8e9,stroke:#33691e,stroke-width:2px,color:#000
+    style G fill:#e0f2f1,stroke:#004d40,stroke-width:2px,color:#000
+    style H fill:#fff8e1,stroke:#ff6f00,stroke-width:2px,color:#000
 ```
 
 </div>
@@ -393,11 +378,11 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 <div align="center">
 
-**Your Name**
+**Santiago Suaza Builes**
 
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/santi)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/santi-profile)
-[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:santi@example.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/santiago-suaza-builes-443033254/)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:santiagosuazabuiles01@gmail.com)
 
 </div>
 
@@ -427,7 +412,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 [![GitHub Issues](https://img.shields.io/badge/GitHub-Issues-black?style=for-the-badge&logo=github)](https://github.com/santi/suaza-erp-system/issues)
 [![GitHub Discussions](https://img.shields.io/badge/GitHub-Discussions-black?style=for-the-badge&logo=github)](https://github.com/santi/suaza-erp-system/discussions)
-[![Email Support](https://img.shields.io/badge/Email-Support-D14836?style=for-the-badge&logo=gmail)](mailto:support@suaza-erp.com)
+[![Email Support](https://img.shields.io/badge/Email-Support-D14836?style=for-the-badge&logo=gmail)](mailto:santiagosuazabuiles01@gmail.com)
 
 </div>
 
