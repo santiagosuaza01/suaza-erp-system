@@ -34,6 +34,14 @@ interface PaginatedResponse<T> {
   pagination: Pagination;
 }
 
+/**
+ * API response with nested data structure
+ */
+interface ApiResponseWithNestedData<T> {
+  [key: string]: T[] | Pagination;
+  pagination: Pagination;
+}
+
 // ============================================================================
 // CONFIGURATION
 // ============================================================================
@@ -134,7 +142,7 @@ interface Product {
 interface Sale {
   id: string;
   invoiceNumber: string;
-  customerId?: string;
+  customerId?: string | null;
   customerName: string;
   totalAmount: number;
   taxAmount: number;
@@ -200,7 +208,7 @@ export const customersService = {
    * @param params - Query parameters (page, limit, search)
    * @returns Promise with paginated customers
    */
-  getAll: (params?: { page?: number; limit?: number; search?: string }): Promise<AxiosResponse<PaginatedResponse<Customer>>> =>
+  getAll: (params?: { page?: number; limit?: number; search?: string }): Promise<AxiosResponse<{ customers: Customer[]; pagination: Pagination }>> =>
     api.get('/customers', { params }),
 
   /**
@@ -246,7 +254,7 @@ export const productsService = {
    * @param params - Query parameters (page, limit, search)
    * @returns Promise with paginated products
    */
-  getAll: (params?: { page?: number; limit?: number; search?: string }): Promise<AxiosResponse<PaginatedResponse<Product>>> =>
+  getAll: (params?: { page?: number; limit?: number; search?: string }): Promise<AxiosResponse<{ products: Product[]; pagination: Pagination }>> =>
     api.get('/products', { params }),
 
   /**
@@ -292,7 +300,7 @@ export const salesService = {
    * @param params - Query parameters (page, limit, search)
    * @returns Promise with paginated sales
    */
-  getAll: (params?: { page?: number; limit?: number; search?: string }): Promise<AxiosResponse<PaginatedResponse<Sale>>> =>
+  getAll: (params?: { page?: number; limit?: number; search?: string }): Promise<AxiosResponse<{ sales: Sale[]; pagination: Pagination }>> =>
     api.get('/sales', { params }),
 
   /**
@@ -327,6 +335,51 @@ export const salesService = {
    */
   delete: (id: string): Promise<AxiosResponse<ApiResponse>> =>
     api.delete(`/sales/${id}`),
+};
+
+/**
+ * Categories service
+ */
+export const categoriesService = {
+  /**
+   * Get all categories
+   * @returns Promise with categories data
+   */
+  getAll: (): Promise<AxiosResponse<ApiResponse>> =>
+    api.get('/categories'),
+
+  /**
+   * Get category by ID
+   * @param id - Category ID
+   * @returns Promise with category data
+   */
+  getById: (id: string): Promise<AxiosResponse<ApiResponse>> =>
+    api.get(`/categories/${id}`),
+
+  /**
+   * Create new category
+   * @param data - Category data
+   * @returns Promise with created category
+   */
+  create: (data: any): Promise<AxiosResponse<ApiResponse>> =>
+    api.post('/categories', data),
+
+  /**
+   * Update category
+   * @param id - Category ID
+   * @param data - Updated category data
+   * @returns Promise with updated category
+   */
+  update: (id: string, data: any): Promise<AxiosResponse<ApiResponse>> =>
+    api.put(`/categories/${id}`, data),
+
+  /**
+   * Delete category
+   * @param id - Category ID
+   * @returns Promise with deletion response
+   */
+  delete: (id: string): Promise<AxiosResponse<ApiResponse>> =>
+    api.delete(`/categories/${id}`),
 };
 
 /**
