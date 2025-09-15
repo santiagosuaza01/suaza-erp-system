@@ -153,7 +153,7 @@ const CustomersPage: React.FC = () => {
   
   useEffect(() => {
     initializeData();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // ============================================================================
   // DATA FETCHING FUNCTIONS

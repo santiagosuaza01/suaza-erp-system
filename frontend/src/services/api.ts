@@ -34,13 +34,6 @@ interface PaginatedResponse<T> {
   pagination: Pagination;
 }
 
-/**
- * API response with nested data structure
- */
-interface ApiResponseWithNestedData<T> {
-  [key: string]: T[] | Pagination;
-  pagination: Pagination;
-}
 
 // ============================================================================
 // CONFIGURATION
@@ -114,7 +107,7 @@ interface Customer {
   phone?: string;
   address?: string;
   city?: string;
-  taxId?: string;
+  taxId: string;
   creditLimit?: number;
   isActive: boolean;
   createdAt: string;
@@ -127,12 +120,18 @@ interface Product {
   id: string;
   name: string;
   code: string;
+  barcode?: string;
   description?: string;
   price: number;
+  cost?: number;
   stock: number;
-  unit?: string;
+  minStock?: number;
+  maxStock?: number;
+  unit: string;
   categoryId?: string;
+  category?: any;
   isActive: boolean;
+  hasExpiration?: boolean;
   createdAt: string;
 }
 
@@ -143,6 +142,7 @@ interface Sale {
   id: string;
   invoiceNumber: string;
   customerId?: string | null;
+  customer?: Customer | null;
   customerName: string;
   totalAmount: number;
   taxAmount: number;
@@ -160,6 +160,7 @@ interface Sale {
 interface SaleItem {
   id: string;
   productId: string;
+  product?: Product;
   quantity: number;
   unitPrice: number;
   totalPrice: number;
@@ -316,7 +317,7 @@ export const salesService = {
    * @param data - Sale data
    * @returns Promise with created sale
    */
-  create: (data: Partial<Sale>): Promise<AxiosResponse<Sale>> =>
+  create: (data: any): Promise<AxiosResponse<Sale>> =>
     api.post('/sales', data),
 
   /**
@@ -325,7 +326,7 @@ export const salesService = {
    * @param data - Updated sale data
    * @returns Promise with updated sale
    */
-  update: (id: string, data: Partial<Sale>): Promise<AxiosResponse<Sale>> =>
+  update: (id: string, data: any): Promise<AxiosResponse<Sale>> =>
     api.put(`/sales/${id}`, data),
 
   /**

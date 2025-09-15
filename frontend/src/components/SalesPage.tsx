@@ -38,7 +38,7 @@ import {
   ShoppingCart as ShoppingCartIcon,
   Receipt as ReceiptIcon,
 } from '@mui/icons-material';
-import { salesService, customersService, productsService } from '../services/api';
+import { salesService, customersService, productsService, type Customer, type Product, type Sale } from '../services/api';
 import toast from 'react-hot-toast';
 
 // ============================================================================
@@ -46,62 +46,23 @@ import toast from 'react-hot-toast';
 // ============================================================================
 
 /**
- * Customer interface for sales management
+ * Extended sale item interface for form handling
  */
-interface Customer {
-  id: string;
-  name: string;
-  taxId: string;
-}
-
-/**
- * Product interface with inventory information
- */
-interface Product {
-  id: string;
-  code: string;
-  name: string;
-  price: number;
-  stock: number;
-  unit: string;
-}
-
-/**
- * Sale item interface representing a product in a sale
- */
-interface SaleItem {
+interface SaleItemForm {
   productId: string;
-  product: Product;
   quantity: number;
   unitPrice: number;
-}
-
-/**
- * Complete sale interface with all related data
- */
-interface Sale {
-  id: string;
-  invoiceNumber: string;
-  customer: Customer | null;
-  customerName: string;
-  totalAmount: number;
-  taxAmount: number;
-  subtotal: number;
-  discount: number;
-  paymentMethod: string;
-  status: string;
-  createdAt: string;
-  items: SaleItem[];
 }
 
 /**
  * Form data interface for sale creation/editing
  */
 interface SaleFormData {
-  customerId: string;
+  customerId: string | null;
   customerName: string;
   paymentMethod: string;
   discount: number;
+  items: SaleItemForm[];
 }
 
 /**
@@ -164,10 +125,11 @@ const SALE_STATUS_COLORS: Record<SaleStatus, 'warning' | 'success' | 'error' | '
  * Default form data for new sales
  */
 const DEFAULT_FORM_DATA: SaleFormData = {
-  customerId: '',
+  customerId: null,
   customerName: '',
   paymentMethod: 'cash',
   discount: 0,
+  items: [],
 };
 
 /**
@@ -215,7 +177,7 @@ const getStatusColor = (status: string): 'warning' | 'success' | 'error' | 'defa
  * @param discount - Discount amount
  * @returns Calculated totals object
  */
-const calculateSaleTotals = (items: SaleItem[], discount: number): SaleTotals => {
+const calculateSaleTotals = (items: SaleItemForm[], discount: number): SaleTotals => {
   const subtotal = items.reduce((sum, item) => sum + item.quantity * item.unitPrice, 0);
   const taxAmount = (subtotal - discount) * TAX_RATE;
   const totalAmount = subtotal - discount + taxAmount;
@@ -254,7 +216,7 @@ const SalesPage: React.FC = () => {
   
   // Form state
   const [editingSale, setEditingSale] = useState<Sale | null>(null);
-  const [saleItems, setSaleItems] = useState<SaleItem[]>([]);
+  const [saleItems, setSaleItems] = useState<SaleItemForm[]>([]);
   const [formData, setFormData] = useState<SaleFormData>(DEFAULT_FORM_DATA);
 
   // ============================================================================
@@ -337,12 +299,21 @@ const SalesPage: React.FC = () => {
     if (sale) {
       setEditingSale(sale);
       setFormData({
-        customerId: sale.customer?.id || '',
+        customerId: sale.customer?.id || null,
         customerName: sale.customerName || '',
         paymentMethod: sale.paymentMethod,
         discount: sale.discount,
+        items: sale.items.map(item => ({
+          productId: item.productId,
+          quantity: item.quantity,
+          unitPrice: item.unitPrice
+        }))
       });
-      setSaleItems(sale.items);
+      setSaleItems(sale.items.map(item => ({
+        productId: item.productId,
+        quantity: item.quantity,
+        unitPrice: item.unitPrice
+      })));
     } else {
       setEditingSale(null);
       setFormData(DEFAULT_FORM_DATA);
@@ -752,12 +723,14 @@ const SalesPage: React.FC = () => {
             <Grid item xs={12}>
               <Typography variant="h6" gutterBottom>Productos en la Venta</Typography>
               <List>
-                {saleItems.map((item) => (
-                  <ListItem key={item.productId} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <ListItemText
-                      primary={`${item.product.code} - ${item.product.name}`}
-                      secondary={`Precio: ${formatCurrency(item.unitPrice)} | Stock: ${item.product.stock}`}
-                    />
+                {saleItems.map((item) => {
+                  const product = products.find(p => p.id === item.productId);
+                  return (
+                    <ListItem key={item.productId} sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <ListItemText
+                        primary={`${product?.code || 'N/A'} - ${product?.name || 'Producto no encontrado'}`}
+                        secondary={`Precio: ${formatCurrency(item.unitPrice)} | Stock: ${product?.stock || 0}`}
+                      />
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                       <TextField
                         size="small"
@@ -778,7 +751,8 @@ const SalesPage: React.FC = () => {
                       </IconButton>
                     </Box>
                   </ListItem>
-                ))}
+                  );
+                })}
               </List>
             </Grid>
 

@@ -35,31 +35,13 @@ import {
   Inventory as InventoryIcon,
   Warning as WarningIcon,
 } from '@mui/icons-material';
-import { productsService, categoriesService } from '../services/api';
+import { productsService, categoriesService, type Product } from '../services/api';
 import toast from 'react-hot-toast';
 
 interface Category {
   id: string;
   name: string;
   description: string;
-}
-
-interface Product {
-  id: string;
-  code: string;
-  barcode: string;
-  name: string;
-  description: string;
-  category: Category;
-  unit: string;
-  price: number;
-  cost: number;
-  stock: number;
-  minStock: number;
-  maxStock: number;
-  isActive: boolean;
-  hasExpiration: boolean;
-  createdAt: string;
 }
 
 const ProductsPage: React.FC = () => {
@@ -105,7 +87,7 @@ const ProductsPage: React.FC = () => {
   const fetchCategories = async () => {
     try {
       const response = await categoriesService.getAll();
-      setCategories(response.data);
+      setCategories(response.data.data || []);
     } catch (error) {
       console.error('Error fetching categories:', error);
     }
@@ -122,12 +104,12 @@ const ProductsPage: React.FC = () => {
         categoryId: product.category.id,
         unit: product.unit,
         price: product.price,
-        cost: product.cost,
+        cost: product.cost || 0,
         stock: product.stock,
-        minStock: product.minStock,
+        minStock: product.minStock || 0,
         maxStock: product.maxStock || 0,
         isActive: product.isActive,
-        hasExpiration: product.hasExpiration,
+        hasExpiration: product.hasExpiration || false,
       });
     } else {
       setEditingProduct(null);
@@ -261,7 +243,7 @@ const ProductsPage: React.FC = () => {
                 <WarningIcon color="warning" sx={{ mr: 2 }} />
                 <Box>
                   <Typography variant="h6">
-                    {products.filter(p => p.stock <= p.minStock).length}
+                    {products.filter(p => p.stock <= (p.minStock || 0)).length}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
                     Stock Bajo
@@ -279,7 +261,7 @@ const ProductsPage: React.FC = () => {
                 <Box>
                   <Typography variant="h6">
                     {formatCurrency(
-                      products.reduce((sum, p) => sum + (p.stock * p.cost), 0)
+                      products.reduce((sum, p) => sum + (p.stock * (p.cost || 0)), 0)
                     )}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
@@ -309,7 +291,7 @@ const ProductsPage: React.FC = () => {
             </TableHead>
             <TableBody>
               {products.map((product) => {
-                const stockStatus = getStockStatus(product.stock, product.minStock);
+                const stockStatus = getStockStatus(product.stock, product.minStock || 0);
                 return (
                   <TableRow key={product.id}>
                     <TableCell>{product.code}</TableCell>
