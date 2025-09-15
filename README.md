@@ -10,9 +10,9 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5+-blue.svg)](https://www.typescriptlang.org/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-12+-blue.svg)](https://www.postgresql.org/)
 
-[![GitHub stars](https://img.shields.io/github/stars/your-username/suaza-erp-system?style=social)](https://github.com/your-username/suaza-erp-system)
-[![GitHub forks](https://img.shields.io/github/forks/your-username/suaza-erp-system?style=social)](https://github.com/your-username/suaza-erp-system)
-[![GitHub issues](https://img.shields.io/github/issues/your-username/suaza-erp-system)](https://github.com/your-username/suaza-erp-system/issues)
+[![GitHub stars](https://img.shields.io/github/stars/santi/suaza-erp-system?style=social)](https://github.com/santi/suaza-erp-system)
+[![GitHub forks](https://img.shields.io/github/forks/santi/suaza-erp-system?style=social)](https://github.com/santi/suaza-erp-system)
+[![GitHub issues](https://img.shields.io/github/issues/santi/suaza-erp-system)](https://github.com/santi/suaza-erp-system/issues)
 
 ---
 
@@ -80,7 +80,7 @@
 ### **2️⃣ Clone & Install**
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/suaza-erp-system.git
+git clone https://github.com/santi/suaza-erp-system.git
 cd suaza-erp-system
 
 # Install dependencies
@@ -398,9 +398,9 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 **Your Name**
 
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/your-username)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/your-profile)
-[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:your-email@example.com)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/santi)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/santi-profile)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:santi@example.com)
 
 </div>
 
@@ -428,8 +428,8 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ### **Need Help? We're Here! 🤝**
 
-[![GitHub Issues](https://img.shields.io/badge/GitHub-Issues-black?style=for-the-badge&logo=github)](https://github.com/your-username/suaza-erp-system/issues)
-[![GitHub Discussions](https://img.shields.io/badge/GitHub-Discussions-black?style=for-the-badge&logo=github)](https://github.com/your-username/suaza-erp-system/discussions)
+[![GitHub Issues](https://img.shields.io/badge/GitHub-Issues-black?style=for-the-badge&logo=github)](https://github.com/santi/suaza-erp-system/issues)
+[![GitHub Discussions](https://img.shields.io/badge/GitHub-Discussions-black?style=for-the-badge&logo=github)](https://github.com/santi/suaza-erp-system/discussions)
 [![Email Support](https://img.shields.io/badge/Email-Support-D14836?style=for-the-badge&logo=gmail)](mailto:support@suaza-erp.com)
 
 </div>
@@ -442,7 +442,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 **Made with ❤️ for agricultural enterprises**
 
-[![GitHub stars](https://img.shields.io/github/stars/your-username/suaza-erp-system?style=social)](https://github.com/your-username/suaza-erp-system)
-[![GitHub forks](https://img.shields.io/github/forks/your-username/suaza-erp-system?style=social)](https://github.com/your-username/suaza-erp-system)
+[![GitHub stars](https://img.shields.io/github/stars/santi/suaza-erp-system?style=social)](https://github.com/santi/suaza-erp-system)
+[![GitHub forks](https://img.shields.io/github/forks/santi/suaza-erp-system?style=social)](https://github.com/santi/suaza-erp-system)
 
 </div>
