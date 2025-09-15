@@ -10,9 +10,6 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5+-blue.svg)](https://www.typescriptlang.org/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-12+-blue.svg)](https://www.postgresql.org/)
 
-[![GitHub stars](https://img.shields.io/github/stars/santi/suaza-erp-system?style=social)](https://github.com/santi/suaza-erp-system)
-[![GitHub forks](https://img.shields.io/github/forks/santi/suaza-erp-system?style=social)](https://github.com/santi/suaza-erp-system)
-[![GitHub issues](https://img.shields.io/github/issues/santi/suaza-erp-system)](https://github.com/santi/suaza-erp-system/issues)
 
 ---
 
@@ -442,7 +439,5 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 **Made with ❤️ for agricultural enterprises**
 
-[![GitHub stars](https://img.shields.io/github/stars/santi/suaza-erp-system?style=social)](https://github.com/santi/suaza-erp-system)
-[![GitHub forks](https://img.shields.io/github/forks/santi/suaza-erp-system?style=social)](https://github.com/santi/suaza-erp-system)
 
 </div>
